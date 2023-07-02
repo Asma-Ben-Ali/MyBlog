@@ -20,6 +20,24 @@
         .bio {
             margin-bottom: 20px;
         }
+        article {
+            margin-bottom: 40px;
+        }
+        time {
+            display: block;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #999;
+        }
     </style>
 </head>
 <body>
@@ -36,35 +54,17 @@
 
     <section>
         <h2>Blog Posts</h2>
+        {% for post in posts %}
         <article>
-          <h3>Data Engineering Basics</h3>
-          <p>Published on: <time datetime="2023-06-15">June 15, 2023</time></p>
-          <p>
-            In this post, I will cover the fundamentals of data engineering, including data ingestion, processing, and storage.
-          </p>
+            <time>Published: {{ post.published_date }}</time>
+            <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
         </article>
-        
-        <article>
-          <h3>Data Pipelines with Apache Spark</h3>
-          <p>Published on: <time datetime="2023-06-30">June 30, 2023</time></p>
-          <p>
-            Learn how to build efficient data pipelines using Apache Spark, a popular big data processing framework.
-          </p>
-        </article>
-        
-        <article>
-          <h3>Introduction to SQL for Data Engineering</h3>
-          <p>Published on: <time datetime="2023-07-10">July 10, 2023</time></p>
-          <p>
-            In this post, I will provide an introduction to SQL and explain how it can be used in the context of data engineering.
-          </p>
-        </article>
-        
-        <!-- Add more blog posts here -->
-      </section>
-      
-      <footer>
+        {% endfor %}
+    </section>
+    
+    <footer>
         <p>&copy; 2023 Asma Ben Ali - Data Engineering Girl</p>
-      </footer>
+    </footer>
 </body>
 </html>
